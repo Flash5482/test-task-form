@@ -1,6 +1,6 @@
 # TestTaskForm
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.0.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14+.
 
 ## Development server
 
@@ -25,3 +25,11 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+Node version v18.16.1
+
+NPM version 9.5.1
+
+RECOMANDATION REGARDING TESTIN EMAIL FIELD
+
+Mocked email test@example.com, user@example.com
