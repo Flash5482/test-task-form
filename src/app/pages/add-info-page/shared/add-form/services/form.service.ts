@@ -26,10 +26,13 @@ export class FormService extends BaseFormService<IAddFormValue>{
         validators: [Validators.email],
         asyncValidators: emailAsyncValidator(),
       }),
-      [AddFormControl.ADDRESS]: this.fb.control(null, Validators.compose([
+      [AddFormControl.PHONES]: this.fb.array([
+        new FormControl(null, Validators.compose([Validators.required])),
+      ]),
+      [AddFormControl.COUNTRY]: this.fb.control(null, Validators.compose([
         Validators.required,
       ])),
-      [AddFormControl.COUNTRY]: this.fb.control(null, Validators.compose([
+      [AddFormControl.ADDRESS]: this.fb.control(null, Validators.compose([
         Validators.required,
       ])),
       [AddFormControl.CREDIT_CART]: this.fb.control(null, Validators.compose([
@@ -40,10 +43,7 @@ export class FormService extends BaseFormService<IAddFormValue>{
       ])),
       [AddFormControl.TERMS]: this.fb.control(null, Validators.compose([
         Validators.requiredTrue,
-      ])),
-      [AddFormControl.PHONES]: this.fb.array([
-          new FormControl(null, Validators.compose([Validators.required])),
-      ])
+      ]))
     })
   }
 }

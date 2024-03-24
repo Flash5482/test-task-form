@@ -26,11 +26,9 @@ readonly countriesOptions = countriesOptions;
   formSubmitted: boolean = false;
 
   loading: boolean = false;
+  countPhones: number = 0;
 
-  emailMaskConfig = {
-    mask: /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/,
-    lazy: false
-  };
+
   get form(): FormGroup {
     return this.formService.form;
   }
@@ -49,10 +47,12 @@ readonly countriesOptions = countriesOptions;
 
   addPhone(){
     this.phonesFields.push(new FormControl(null, Validators.compose([Validators.required])))
+    this.countPhones++;
   }
 
   removePhone(index: number){
   this.phonesFields.removeAt(index);
+    this.countPhones--;
   }
 
   addInfo(){
@@ -64,6 +64,7 @@ readonly countriesOptions = countriesOptions;
 
     this.loading = true;
     this.simulateAsyncTask().subscribe(() => {
+      console.log(this.formService.value)
       this.loading = false;
     });
   }
@@ -85,7 +86,7 @@ readonly countriesOptions = countriesOptions;
       if (formControls.hasOwnProperty(controlName)) {
         const control = formControls[controlName];
         if (control.invalid) {
-          return this.formElement.nativeElement.querySelector(`[ng-reflect-name="${controlName}"]`);
+          return this.formElement.nativeElement.querySelector(`[ng-reflect-name="${controlName === 'phones' ? this.countPhones : controlName}"]`);
         }
       }
     }
